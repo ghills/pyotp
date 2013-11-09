@@ -42,7 +42,7 @@ def hotp_code( secret, counter, digits=6 ):
     """Gets the HOTP code"""
     if digits < 6 or digits > 8:
         # the RFC only allows 6-8 digits
-        raise Exception('Invalid number of digits: {}'.format(digits))
+        raise ValueError('Invalid number of digits: {}'.format(digits))
 
     count_hash = int_to_big_endian_bytes(counter)
     digest = sha1_digest(key=secret,counter=count_hash)
